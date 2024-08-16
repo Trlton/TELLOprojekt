@@ -1,6 +1,11 @@
 from djitellopy import tello
 
 lort = tello.Tello()
-lort.move_up(30)
-lort.move_downn(25)
+lort.takeoff()
+lort.move_up(100)
+lort.move_forward(200)
+lort.flip("back")
+lort.flip("front")
+lort.move_back(300)
 lort.land()
+
