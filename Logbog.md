@@ -13,6 +13,11 @@ Dagens opgaver
 Arbejde med Tello droner
 Vi har prøvet at arbejde med Tello dronerne på flere forskellige måder, vi har brugt scratch, app på telefon og python. Det lykkes med at få python til at give dronen kommandoer.
 
+### Dagens opgaver 
+Få connected til drone via python, evt block code, evt app
+Få manøvreret med drone (basic) igennem i hvert fald python
+Evt tricks
+
 ### ·	Resumé af dagen 
 Vi har nået at forbinde til drone og oprette basal kode. Her benyttede vi python. .flip virkede dog ikke, muligvis pga mangel på strøm. Vi fik forbundet til både Zakariases og Rasmus' computer.
 En af dronens proppel/motor dims virkede ikke optimalt til sidst. Muligvis pga hår. En af bladende var sværere at rotere.
