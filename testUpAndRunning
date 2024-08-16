@@ -8,4 +8,4 @@ lort.flip("back")
 lort.flip("front")
 lort.move_back(300)
 lort.land()
-
+#hej
