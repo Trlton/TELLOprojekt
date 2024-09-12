@@ -19,7 +19,7 @@ if not arduino_port:
     raise Exception("Arduino not found! Please check the connection.")
 
 # Initialize the serial connection with the detected port
-ser = serial.Serial(arduino_port, 9600, timeout=1)
+ser = serial.Serial(arduino_port, 115200, timeout=1)
 
 # Keypad mapping from hex values to actual buttons
 keypad_mapping = {
