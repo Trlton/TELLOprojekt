@@ -32,19 +32,32 @@ void setup() {
 
 void loop() {
     // Check keypad data and send to serial
-    printKeypadData();
+    //printKeypadData();
 
     // Check sensor data and send to serial
-    printSensorData();
+    //printSensorData();
+
+    // Check joystick data and send to seriel
+    printJoystickData();
 
     delay(500);  // Delay for stability
+}
+
+void printJoystickData() {
+    int sensorValueX = analogRead(A0);  // Read X-axis (Joystick connected to A0)
+    int sensorValueY = analogRead(A1);  // Read Y-axis (Joystick connected to A1)
+
+    Serial.print("Joystick X,Y: ");
+    Serial.print(sensorValueX);   // Print X-axis value
+    Serial.print(", ");
+    Serial.println(sensorValueY); // Print Y-axis value
 }
 
 void printKeypadData() {
     while (keypadSerial.available()) {
         uint8_t data = keypadSerial.read();
-        Serial.print("Keypad Data: 0x");
-        Serial.println(data, HEX);  // Print data as hexadecimal for debugging
+        Serial.print("Keypad Data:");
+        Serial.println(data,HEX);  // Print data as hexadecimal for debugging
     }
 }
 
