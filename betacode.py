@@ -35,6 +35,7 @@ THRESHOLD = 60  # Sensitivity threshold around the center for no movement
 is_flying = False  # Global variable to track drone state
 
 
+# Process joystick data to move the drone
 def process_joystick_data(x, y):
     global is_flying
 
@@ -57,13 +58,36 @@ def process_joystick_data(x, y):
         tello.move_back(20)
 
 
+# Function to process keypad data (numpad 2, 4, 6, 8, etc.)
+def process_keypad_data(hex_data):
+    # Mapping numpad keys to movements
+    key_map = {
+        '2': tello.move_forward,      # Numpad 2: Forward
+        '4': tello.move_left,         # Numpad 4: Left
+        '6': tello.move_right,        # Numpad 6: Right
+        '8': tello.move_back,         # Numpad 8: Backward
+        '1': lambda: tello.move_left(20) or tello.move_forward(20),  # Numpad 1: Left-Forwards
+        '3': lambda: tello.move_right(20) or tello.move_forward(20),  # Numpad 3: Right-Forwards
+        '7': lambda: tello.move_left(20) or tello.move_back(20),     # Numpad 7: Left-Backwards
+        '9': lambda: tello.move_right(20) or tello.move_back(20),    # Numpad 9: Right-Backwards
+        '5': tello.flip_forward,      # Numpad 5: Flip
+        '*': lambda: tello.move_up(20),  # Numpad *: Move Up
+        '#': lambda: tello.move_down(20)  # Numpad #: Move Down
+    }
+
+    # Call the appropriate movement function if the key exists in the map
+    if hex_data in key_map:
+        key_map[hex_data]()  # Execute the mapped function
+
+
 # Function to update the GUI with joystick and keypad data
 def update_data():
     try:
         line = ser.readline().decode('utf-8').strip()  # Read a line from serial
         if line.startswith("Keypad Data:"):
-            hex_data = line.split(":")[1].strip()
-            # Handle keypad data (similar to what you had before)
+            hex_data = line.split(":")[1].strip()  # Extract hex data
+            keypad_data.set(f"Keypad: {hex_data}")
+            process_keypad_data(hex_data)  # Process the numpad key inputs
         elif "X,Y" in line:  # Expecting joystick data format: "The X and Y coordinate is: 509,505"
             xy_data = line.split(":")[1].strip()
             x_value, y_value = map(int, xy_data.split(","))
