@@ -104,6 +104,7 @@ class Ui:
         keypad_label_surface = self.font.render(keypad_label_text, True, (0, 0, 0))
         self.screen.blit(keypad_label_surface, (50, 50))
 
+
 def draw_sensor_data_box(screen, x, y, width, height, data_label, data_values):
     pygame.draw.rect(screen, (200, 200, 200), (x, y, width, height), 2)  # Draw box with border
     text_surface = self.font.render(data_label, True, (30, 30, 30))
@@ -115,6 +116,7 @@ def draw_sensor_data_box(screen, x, y, width, height, data_label, data_values):
         value_surface = self.font.render(value_text, True, (30, 30, 30))
         screen.blit(value_surface, (x + 50 + i * 80, y + 25))  # Aligned values with padding
 
+
 def get_keypad_data_from_serial():
     try:
         line = ser.readline().decode('utf-8').strip()
@@ -124,6 +126,7 @@ def get_keypad_data_from_serial():
     except:
         print("Error reading keypad data")
         return None
+
 
 if __name__ == "__main__":
     main()
