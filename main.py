@@ -34,6 +34,7 @@ JOYSTICK_CENTER_Y = 505
 THRESHOLD = 60  # Sensitivity threshold around the center for no movement
 is_flying = False  # Global variable to track drone state
 
+
 def process_joystick_data(x, y):
     global is_flying
 
