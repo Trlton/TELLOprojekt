@@ -24,8 +24,7 @@ def read_data_from_arduino():
                 x = int(x_str)
                 y = int(y_str)
 
-                # Apply drift compensation
-                y_compensated = y - DRIFT_COMPENSATION
+    
 
                 # Map joystick values from 63-190 to desired range (e.g., -100 to 100)
                 x_mapped = map_value(x, 258, 764, -100, 100)  # Example range -100 to 100
