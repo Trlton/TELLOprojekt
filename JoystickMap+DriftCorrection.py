@@ -11,7 +11,7 @@ SERIAL_PORT = 'COM10'
 BAUD_RATE = 9600
 
 # Drift compensation value for Y-axis
-DRIFT_COMPENSATION = 0  # Change this if necessary
+DRIFT_COMPENSATION = 0
 
 
 def map_value(value, from_min, from_max, to_min, to_max):
@@ -40,6 +40,6 @@ def read_data_from_arduino():
 
 
                 drone.send_rc_control(y_mapped,x_mapped,0,0)
-                time.sleep(0.05)
+                time.sleep(0.1)
 if __name__ == "__main__":
     read_data_from_arduino()
