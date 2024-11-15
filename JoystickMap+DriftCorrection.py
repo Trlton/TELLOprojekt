@@ -40,6 +40,6 @@ def read_data_from_arduino():
 
 
                 drone.send_rc_control(y_mapped,x_mapped,0,0)
-                time.sleep(0.1)
+                time.sleep(0.05)
 if __name__ == "__main__":
     read_data_from_arduino()
